@@ -19,11 +19,14 @@ syntax is same to limit_zone.
 
     http {
         #limit_traffic_rate_zone   rate $request_uri 32m;
+        #limit_traffic_rate_zone   rate $server_name 32m;
         limit_traffic_rate_zone   rate $remote_addr 32m;
         
         server {
             location /download/ {
-                limit_traffic_rate  rate 20k limitburst;
+                limit_traffic_rate  rate 50m limitburst;
+                limit_rate 2m;
+                limit_rate_after 5m;
             }
         }
     }
