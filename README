@@ -23,12 +23,14 @@ syntax is same to limit_zone.
         
         server {
             location /download/ {
-                limit_traffic_rate  rate 20k;
+                limit_traffic_rate  rate 20k limitburst;
             }
         }
     }
 
 Changelogs
+  v0.3 
+    *   add_feture limitburst, traffic limit to limit_rate_after     
   v0.2 
     *   modify algorithm, rate = (limit - last_rate)/conn + last_rate
   v0.1
